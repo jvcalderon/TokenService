@@ -1,0 +1,38 @@
+#token-redis:
+#    image: redis:3.2.6
+#    container_name: token-redis
+
+token-webserver:
+    container_name: token-webserver
+    image: nginx:1.11.6-alpine
+    volumes:
+        - ../token:/token
+        - ./site.conf:/etc/nginx/conf.d/default.conf
+    ports:
+        - "8080:80"
+    links:
+        - php
+
+#Develop purposes
+php:
+    container_name: token-php7
+    build: .
+    dockerfile: ./Dockerfile
+    volumes:
+        - ../token:/token
+        - ./logs/php-fpm/:/tmp/xdebug_log
+    expose:
+        - "9000"
+    ports:
+        - "9001:9001"
+    environment:
+        PHP_IDE_CONFIG: "serverName=docker"
+
+#Official repository
+#php:
+#    container_name: token-php7
+#    image: ttaranto/docker-nginx-php7
+#    image: php:7-fpm
+#    volumes:
+#        - ../token:/token
+

@@ -1,0 +1,12 @@
+{
+  "require": {
+    "silex/silex": "~2.0",
+    "jms/serializer": "^1.4",
+    "carlosbuenosvinos/ddd": "^1.6"
+  },
+  "autoload": {
+    "psr-0": {
+      "Token": "src/"
+    }
+  }
+}
