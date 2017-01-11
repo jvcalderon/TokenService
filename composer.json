@@ -1,8 +1,18 @@
 {
+  "license": "MIT",
+  "type": "project",
+  "authors": [
+    {
+      "name": "José Vte. Calderón",
+      "email": "jvcalcab@gmail.com"
+    }
+  ],
   "require": {
     "silex/silex": "~2.0",
-    "jms/serializer": "^1.4",
-    "carlosbuenosvinos/ddd": "^1.6"
+    "carlosbuenosvinos/ddd": "^1.6",
+    "doctrine/orm": "^2.5",
+    "symfony/yaml": "^3.2",
+    "willdurand/hateoas": "^2.10"
   },
   "autoload": {
     "psr-0": {

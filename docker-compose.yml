@@ -1,9 +1,9 @@
-#token-redis:
-#    image: redis:3.2.6
-#    container_name: token-redis
+redis:
+    image: redis:3.2.6
+    container_name: redis
 
-token-webserver:
-    container_name: token-webserver
+webserver:
+    container_name: webserver
     image: nginx:1.11.6-alpine
     volumes:
         - ../token:/token
@@ -15,7 +15,7 @@ token-webserver:
 
 #Develop purposes
 php:
-    container_name: token-php7
+    container_name: php
     build: .
     dockerfile: ./Dockerfile
     volumes:
@@ -27,12 +27,6 @@ php:
         - "9001:9001"
     environment:
         PHP_IDE_CONFIG: "serverName=docker"
-
-#Official repository
-#php:
-#    container_name: token-php7
-#    image: ttaranto/docker-nginx-php7
-#    image: php:7-fpm
-#    volumes:
-#        - ../token:/token
+    links:
+        - redis
 
