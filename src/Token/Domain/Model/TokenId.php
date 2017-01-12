@@ -1,6 +1,6 @@
 <?php
 
-namespace Token\Domain\Entity;
+namespace Token\Domain\Model;
 
 class TokenId
 {

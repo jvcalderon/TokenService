@@ -1,11 +1,12 @@
 <?php
 
-namespace Token\Domain\Entity;
+namespace Token\Domain\Model\Event\AbstractFactory;
 
 use Ddd\Domain\DomainEvent;
 use Ddd\Domain\Event\PublishableDomainEvent;
+use Token\Domain\Model\TokenId;
 
-class TokenCreated implements DomainEvent, PublishableDomainEvent
+abstract class TokenEvent implements DomainEvent, PublishableDomainEvent
 {
     /**
      * @var TokenId
@@ -15,28 +16,17 @@ class TokenCreated implements DomainEvent, PublishableDomainEvent
     /**
      * @var \DateTime
      */
-    protected $expirationDatetime;
-
-    /**
-     * @var \DateTime
-     */
     protected $occurredOn;
 
-    public function __construct(TokenId $tokenId, \DateTime $expirationDatetime)
+    public function __construct(TokenId $tokenId)
     {
         $this->tokenId = $tokenId->id();
-        $this->expirationDatetime = $expirationDatetime;
         $this->occurredOn = new \DateTime();
     }
 
     public function tokenId()
     {
         return $this->tokenId;
-    }
-
-    public function expirationDatetime()
-    {
-        return $this->expirationDatetime;
     }
 
     public function occurredOn()

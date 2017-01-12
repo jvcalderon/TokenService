@@ -5,57 +5,41 @@ namespace Token\Application\Service;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Token\Domain\Entity\Token;
-use Token\Domain\Entity\TokenId;
+use Token\Application\Service\AbstractFactory\TokenService;
+use Token\Application\Service\AbstractFactory\TokenServiceInterface;
+use Token\Domain\Model\Token;
+use Token\Domain\Model\TokenId;
 
-class CreateTokenService
+class CreateTokenService extends TokenService implements TokenServiceInterface
 {
-
-    /**
-     * @var Token
-     */
-    protected $token;
-
-    /**
-     * @var Response
-     */
-    protected $response;
 
     /**
      * @var UrlGenerator
      */
     private $urlGenerator;
 
-    const ENDPOINT_NAME = '_create_token';
-
     public function __construct(UrlGenerator $urlGenerator)
     {
         $this->urlGenerator = $urlGenerator;
     }
 
+    public static function endpointName()
+    {
+        return '_create_token';
+    }
+
     public function execute()
     {
-        $expirationDatetime = (new \DateTime())->setTimestamp(strtotime("+14 days"));
-        $this->token = new Token(new TokenId(), $expirationDatetime);
+        $this->token = new Token(new TokenId());
         $this->response = new Response(null, Response::HTTP_CREATED, ['Location' => $this->getLocation()]);
 
         return $this;
     }
 
-    public function token()
-    {
-        return $this->token;
-    }
-
-    public function response()
-    {
-        return $this->response;
-    }
-
     private function getLocation()
     {
         return $this->urlGenerator->generate(
-            ViewTokenService::ENDPOINT_NAME,
+            ViewTokenService::endpointName(),
             ['tokenId' => (string)$this->token->id()],
             UrlGeneratorInterface::ABSOLUTE_URL);
     }

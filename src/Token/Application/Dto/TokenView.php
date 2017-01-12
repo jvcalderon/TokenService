@@ -4,6 +4,7 @@ namespace Token\Application\Dto;
 
 use Hateoas\Configuration\Annotation as Hateoas;
 use Token\Application\Service\ViewTokenService;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @Hateoas\Relation(

@@ -12,6 +12,7 @@ use Hateoas\UrlGenerator\SymfonyUrlGenerator;
 use Silex\Provider\DoctrineServiceProvider;
 use Silex\Provider\RoutingServiceProvider;
 use Token\Application\Service\CreateTokenService;
+use Token\Application\Service\ExpireTokenService;
 use Token\Application\Service\ViewTokenService;
 use Token\Infrastructure\Persistence\Doctrine\EntityManagerFactory;
 
@@ -63,6 +64,10 @@ class Application
 
         $app['view_token'] = function ($app) {
             return new ViewTokenService($app['serializer']);
+        };
+
+        $app['expire_token'] = function () {
+            return new ExpireTokenService();
         };
 
         $app->before(function () use ($app) {
