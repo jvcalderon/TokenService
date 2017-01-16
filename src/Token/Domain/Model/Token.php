@@ -29,7 +29,7 @@ class Token
         $this->id = $id;
         $this->expirationDatetime = (new \DateTime())->setTimestamp(strtotime("+14 days"));
 
-        $event = new TokenCreated($this->id(), $this->expirationDatetime());
+        $event = new TokenCreated($this->id(), $this->expirationDatetime(), $this->ttl());
         DomainEventPublisher::instance()->publish($event);
     }
 

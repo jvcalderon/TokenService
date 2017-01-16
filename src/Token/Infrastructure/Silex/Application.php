@@ -14,6 +14,8 @@ use Silex\Provider\RoutingServiceProvider;
 use Token\Application\Service\CreateTokenService;
 use Token\Application\Service\ExpireTokenService;
 use Token\Application\Service\ViewTokenService;
+use Token\Infrastructure\Persistence\Domain\ExpireTokenEventSubscriber;
+use Token\Infrastructure\Persistence\Domain\PersistTokenEventSubscriber;
 use Token\Infrastructure\Persistence\Doctrine\EntityManagerFactory;
 
 class Application
@@ -74,6 +76,16 @@ class Application
             DomainEventPublisher::instance()->subscribe(
                 new PersistDomainEventSubscriber(
                     $app['event_store']
+                )
+            );
+            DomainEventPublisher::instance()->subscribe(
+                new PersistTokenEventSubscriber(
+                    $app['cache']
+                )
+            );
+            DomainEventPublisher::instance()->subscribe(
+                new ExpireTokenEventSubscriber(
+                    $app['cache']
                 )
             );
         });

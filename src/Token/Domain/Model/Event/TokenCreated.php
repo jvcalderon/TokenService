@@ -13,14 +13,25 @@ class TokenCreated extends TokenEvent
      */
     protected $expirationDatetime;
 
-    public function __construct(TokenId $tokenId, \DateTime $expirationDatetime)
+    /**
+     * @var int
+     */
+    protected $ttl;
+
+    public function __construct(TokenId $tokenId, \DateTime $expirationDatetime, int $ttl)
     {
         parent::__construct($tokenId);
         $this->expirationDatetime = $expirationDatetime;
+        $this->ttl = $ttl;
     }
 
     public function expirationDatetime()
     {
         return $this->expirationDatetime;
+    }
+
+    public function ttl()
+    {
+        return $this->ttl;
     }
 }

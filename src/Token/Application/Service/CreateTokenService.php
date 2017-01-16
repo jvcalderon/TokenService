@@ -5,18 +5,21 @@ namespace Token\Application\Service;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Token\Application\Service\AbstractFactory\TokenService;
-use Token\Application\Service\AbstractFactory\TokenServiceInterface;
 use Token\Domain\Model\Token;
 use Token\Domain\Model\TokenId;
 
-class CreateTokenService extends TokenService implements TokenServiceInterface
+class CreateTokenService implements TokenServiceInterface
 {
 
     /**
      * @var UrlGenerator
      */
     private $urlGenerator;
+
+    /**
+     * @var Token
+     */
+    private $token;
 
     public function __construct(UrlGenerator $urlGenerator)
     {
@@ -31,9 +34,7 @@ class CreateTokenService extends TokenService implements TokenServiceInterface
     public function execute()
     {
         $this->token = new Token(new TokenId());
-        $this->response = new Response(null, Response::HTTP_CREATED, ['Location' => $this->getLocation()]);
-
-        return $this;
+        return new Response(null, Response::HTTP_CREATED, ['Location' => $this->getLocation()]);
     }
 
     private function getLocation()
