@@ -15,9 +15,20 @@
     "willdurand/hateoas": "^2.10",
     "jms/serializer": "^1.4"
   },
+  "require-dev": {
+    "phpunit/phpunit": "5.7.*"
+  },
   "autoload": {
     "psr-0": {
       "Token": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-0": {
+      "Token": "tests/Token/"
+    }
+  },
+  "config": {
+    "bin-dir": "bin"
   }
 }
