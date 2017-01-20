@@ -7,7 +7,6 @@ use Token\Domain\Model\TokenId;
 
 class TokenCreated extends TokenEvent
 {
-
     /**
      * @var \DateTime
      */

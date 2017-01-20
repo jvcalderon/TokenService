@@ -22,18 +22,17 @@ class Application
 {
     public static function bootstrap()
     {
-
         AnnotationRegistry::registerLoader('class_exists');
 
         $app = new \Silex\Application();
 
         $app->register(new RoutingServiceProvider());
 
-        $app->register(new DoctrineServiceProvider, [
+        $app->register(new DoctrineServiceProvider(), [
             'db.options' => [
                 'driver' => 'pdo_sqlite',
-                'path' => __DIR__ . '/../../../../db.sqlite'
-            ]
+                'path' => __DIR__.'/../../../../db.sqlite',
+            ],
         ]);
 
         $app['em'] = function ($app) {
@@ -43,6 +42,7 @@ class Application
         $app['event_store'] = function ($app) {
             /** @var EntityManager $em */
             $em = $app['em'];
+
             return $em->getRepository('Ddd\Domain\Event\StoredEvent');
         };
 

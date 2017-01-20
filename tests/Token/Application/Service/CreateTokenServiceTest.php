@@ -6,7 +6,6 @@ use Symfony\Component\Routing\Generator\UrlGenerator;
 
 class CreateTokenServiceTest extends \PHPUnit_Framework_TestCase
 {
-
     const MOCKED_URI = 'http://mocked-uri';
 
     /**

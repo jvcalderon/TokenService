@@ -4,7 +4,6 @@ namespace Token\Domain\Model;
 
 class TokenIdTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @test
      */
@@ -31,6 +30,6 @@ class TokenIdTest extends \PHPUnit_Framework_TestCase
     {
         $tokenId = new TokenId();
         $tokenIdString = $tokenId->id();
-        $this->assertEquals($tokenIdString, (string)$tokenId);
+        $this->assertEquals($tokenIdString, (string) $tokenId);
     }
 }

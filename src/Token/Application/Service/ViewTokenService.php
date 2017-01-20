@@ -10,7 +10,6 @@ use Token\Domain\Model\TokenId;
 
 class ViewTokenService implements TokenServiceInterface
 {
-
     const ENDPOINT_NAME = '_view_token';
 
     /**
@@ -35,7 +34,7 @@ class ViewTokenService implements TokenServiceInterface
         }
 
         $token = new Token(new TokenId($tokenId));
-        $tokenView = new TokenView((string)$token->id(), $token->expirationDatetime());
+        $tokenView = new TokenView((string) $token->id(), $token->expirationDatetime());
         $content = $this->serializer->serialize($tokenView, 'json');
 
         return new Response($content, Response::HTTP_OK, ['Content-Type' => 'application/hal+json']);

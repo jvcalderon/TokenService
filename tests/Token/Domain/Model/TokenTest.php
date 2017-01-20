@@ -4,7 +4,6 @@ namespace Token\Domain\Model;
 
 class TokenTest extends \PHPUnit_Framework_TestCase
 {
-
     const MOCKED_TOKEN_STRING_VALUE = 'tokenStringValue';
 
     /**

@@ -8,7 +8,6 @@ use Token\Domain\Model\Event\TokenCreated;
 
 class PersistTokenEventSubscriber implements DomainEventSubscriber
 {
-
     /**
      * @var CacheProvider
      */
@@ -25,7 +24,7 @@ class PersistTokenEventSubscriber implements DomainEventSubscriber
     public function handle($aDomainEvent)
     {
         $this->cache->save(
-            (string)$aDomainEvent->tokenId(),
+            (string) $aDomainEvent->tokenId(),
             $aDomainEvent->expirationDatetime()->format('U'),
             $aDomainEvent->ttl());
     }
@@ -34,5 +33,4 @@ class PersistTokenEventSubscriber implements DomainEventSubscriber
     {
         return $aDomainEvent instanceof TokenCreated;
     }
-
 }

@@ -6,5 +6,4 @@ use Token\Domain\Model\Event\AbstractFactory\TokenEvent;
 
 class TokenExpired extends TokenEvent
 {
-
 }

@@ -19,15 +19,14 @@ class Token
     protected $expirationDatetime;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $ttl;
 
     public function __construct(TokenId $id)
     {
-
         $this->id = $id;
-        $this->expirationDatetime = (new \DateTime())->setTimestamp(strtotime("+14 days"));
+        $this->expirationDatetime = (new \DateTime())->setTimestamp(strtotime('+14 days'));
 
         $event = new TokenCreated($this->id(), $this->expirationDatetime(), $this->ttl());
         DomainEventPublisher::instance()->publish($event);
@@ -63,7 +62,7 @@ class Token
     {
         $currentTimestamp = (new \DateTime())->format('U');
         $expirationTimestamp = $this->expirationDatetime->format('U');
-        $secsToExpire = (int)($expirationTimestamp - $currentTimestamp);
+        $secsToExpire = (int) ($expirationTimestamp - $currentTimestamp);
 
         return ($secsToExpire > 0) ? $secsToExpire : 0;
     }

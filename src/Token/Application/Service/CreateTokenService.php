@@ -10,7 +10,6 @@ use Token\Domain\Model\TokenId;
 
 class CreateTokenService implements TokenServiceInterface
 {
-
     /**
      * @var UrlGenerator
      */
@@ -34,6 +33,7 @@ class CreateTokenService implements TokenServiceInterface
     public function execute()
     {
         $this->token = new Token(new TokenId());
+
         return new Response(null, Response::HTTP_CREATED, ['Location' => $this->getLocation()]);
     }
 
@@ -41,7 +41,7 @@ class CreateTokenService implements TokenServiceInterface
     {
         return $this->urlGenerator->generate(
             ViewTokenService::endpointName(),
-            ['tokenId' => (string)$this->token->id()],
+            ['tokenId' => (string) $this->token->id()],
             UrlGeneratorInterface::ABSOLUTE_URL);
     }
 }

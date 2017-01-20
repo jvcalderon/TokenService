@@ -8,7 +8,6 @@ use Token\Domain\Model\TokenId;
 
 class ExpireTokenService implements TokenServiceInterface
 {
-
     public static function endpointName()
     {
         return '_expire_token';

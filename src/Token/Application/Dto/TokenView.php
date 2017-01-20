@@ -20,11 +20,11 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class TokenView
 {
-
     protected $id;
 
     /**
      * @Serializer\Type("DateTime<'c'>")
+     *
      * @var \DateTime
      */
     protected $expirationDatetime;

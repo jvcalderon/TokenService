@@ -4,7 +4,6 @@ namespace Token\Application\Service;
 
 class ExpireTokenServiceTest extends \PHPUnit_Framework_TestCase
 {
-
     private $expireTokenService;
 
     public function __construct($name = null, array $data = [], $dataName = '')

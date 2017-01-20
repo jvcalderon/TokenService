@@ -6,7 +6,6 @@ use Hateoas\Hateoas;
 
 class ViewTokenServiceTest extends \PHPUnit_Framework_TestCase
 {
-
     const MOCKED_TOKEN_ID_STRING = 'tokenId';
 
     const MOCKED_SERIALIZED_RESPONSE = 'mockedResponse';
@@ -16,14 +15,13 @@ class ViewTokenServiceTest extends \PHPUnit_Framework_TestCase
      */
     private $viewTokenService;
 
-
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
 
         $serializer = $this->createMock(Hateoas::class);
         $serializer->method('serialize')->willReturn(self::MOCKED_SERIALIZED_RESPONSE);
-        /** @var Hateoas $serializer */
+        /* @var Hateoas $serializer */
         $this->viewTokenService = new ViewTokenService($serializer);
     }
 

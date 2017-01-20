@@ -11,11 +11,12 @@ class TokenId
 
     /**
      * TokenId constructor.
+     *
      * @param string|null $id
      */
     public function __construct(string $id = null)
     {
-        $this->id = null === $id ? uniqid() . bin2hex(openssl_random_pseudo_bytes(32)) : $id;
+        $this->id = null === $id ? uniqid().bin2hex(openssl_random_pseudo_bytes(32)) : $id;
     }
 
     /**

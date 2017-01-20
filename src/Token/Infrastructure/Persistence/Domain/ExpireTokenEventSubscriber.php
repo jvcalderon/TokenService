@@ -8,7 +8,6 @@ use Token\Domain\Model\Event\TokenExpired;
 
 class ExpireTokenEventSubscriber implements DomainEventSubscriber
 {
-
     /**
      * @var CacheProvider
      */
@@ -24,12 +23,11 @@ class ExpireTokenEventSubscriber implements DomainEventSubscriber
      */
     public function handle($aDomainEvent)
     {
-        $this->cache->delete((string)$aDomainEvent->tokenId());
+        $this->cache->delete((string) $aDomainEvent->tokenId());
     }
 
     public function isSubscribedTo($aDomainEvent)
     {
         return $aDomainEvent instanceof TokenExpired;
     }
-
 }
