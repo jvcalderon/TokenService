@@ -2,8 +2,6 @@
 
 namespace Token\Application\Service;
 
-use Symfony\Component\Routing\Generator\UrlGenerator;
-
 class ExpireTokenServiceTest extends \PHPUnit_Framework_TestCase
 {
 
