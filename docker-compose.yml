@@ -7,26 +7,19 @@ webserver:
     image: nginx:1.11.6-alpine
     volumes:
         - ../token:/token
-        - ./site.conf:/etc/nginx/conf.d/default.conf
+        - ./config/docker/${ENV}/site.conf:/etc/nginx/conf.d/default.conf
     ports:
         - "8080:80"
     links:
         - php
 
-#Develop purposes
 php:
     container_name: php
     build: .
-    dockerfile: ./Dockerfile
+    dockerfile: ./config/docker/${ENV}/Dockerfile
     volumes:
         - ../token:/token
-        - ./logs/php-fpm/:/tmp/xdebug_log
     expose:
         - "9000"
-    ports:
-        - "9001:9001"
-    environment:
-        PHP_IDE_CONFIG: "serverName=docker"
     links:
         - redis
-

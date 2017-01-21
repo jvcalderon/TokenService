@@ -1,0 +1,7 @@
+php:
+    volumes:
+        - ./logs/php-fpm/:/tmp/xdebug_log
+    ports:
+        - "9001:9001"
+    environment:
+        PHP_IDE_CONFIG: "serverName=docker"
