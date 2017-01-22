@@ -1,5 +1,5 @@
 {
-  "name": "jvcalderon/TokenService",
+  "name": "jvcalderon/token-service",
   "type": "project",
   "description": "A dockerized microservice who provides a REST interface with token's common functionality",
   "keywords": ["Token", "Microservice", "DDD", "Hexagonal architecture"],
