@@ -18,7 +18,7 @@ In a production environment is recommended the following command without XDEBUG 
 
 <pre><code>$ export ENV=prod; docker-compose up --build -d</code></pre>
 
-# Create database schema
+### Create database schema
 
 Use doctrine binary to create DB schema:
 
