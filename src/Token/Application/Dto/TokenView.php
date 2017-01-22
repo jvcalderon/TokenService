@@ -3,14 +3,13 @@
 namespace Token\Application\Dto;
 
 use Hateoas\Configuration\Annotation as Hateoas;
-use Token\Application\Service\ViewTokenService;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @Hateoas\Relation(
  *      "self",
  *      href = @Hateoas\Route(
- *          ViewTokenService::ENDPOINT_NAME,
+ *          Token\Application\Service\ViewTokenService::ENDPOINT_NAME,
  *          parameters = {
  *              "tokenId" = "expr(object.id())"
  *          },
