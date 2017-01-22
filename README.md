@@ -1,6 +1,8 @@
 Token service
 ==============
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/9f05fa39-bf4a-4e24-b329-1932bdac70bd/mini.png)](https://insight.sensiolabs.com/projects/9f05fa39-bf4a-4e24-b329-1932bdac70bd)
+
 A dockerized microservice who provides a REST interface with token's common functionality.
 
 ## Installation
