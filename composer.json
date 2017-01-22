@@ -1,6 +1,9 @@
 {
-  "license": "MIT",
+  "name": "jvcalderon/TokenService",
   "type": "project",
+  "description": "A dockerized microservice who provides a REST interface with token's common functionality",
+  "keywords": ["Token", "Microservice", "DDD", "Hexagonal architecture"],
+  "license": "MIT",
   "authors": [
     {
       "name": "José Vte. Calderón",
@@ -8,6 +11,7 @@
     }
   ],
   "require": {
+    "php": "^7.0",
     "silex/silex": "~2.0",
     "carlosbuenosvinos/ddd": "^1.6",
     "doctrine/orm": "^2.5",
