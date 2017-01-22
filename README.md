@@ -18,6 +18,12 @@ In a production environment is recommended the following command without XDEBUG 
 
 <pre><code>$ export ENV=prod; docker-compose up --build -d</code></pre>
 
+# Create database schema
+
+Use doctrine binary to create DB schema:
+
+<pre><code>$ php bin/doctrine orm:schema-tool:create</code></pre>
+
 ## Debugging with XDEBUG:
 
 You must to keep in mind that the Xdebug's default port (9000) has been replaced by 9089 to avoid collision with PHP CGI.
