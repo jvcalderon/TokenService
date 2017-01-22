@@ -3,3 +3,4 @@ vendor
 .idea
 *.sqlite
 bin
+.DS_Store
